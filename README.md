@@ -1,4 +1,4 @@
-Yii2 Imperavi redactor
+Yii2 Translation Manager
 =================
 
 Installation
