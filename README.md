@@ -9,13 +9,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist krok/yii2-imperavi "*"
+php composer.phar require --prefer-dist krok/yii2-translation "*"
 ```
 
 or add
 
 ```
-"krok/yii2-imperavi": "*"
+"krok/yii2-translation": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -27,32 +27,28 @@ Add to config file (config/web.php or common\config\main.php)
 
 ```
 'bootstrap' => [
-    'imperavi',
+    'translation',
 ],
 ```
-
-upload directory `@webroot/uploads`
 
 ```
 'modules' => [
-    'class' => 'krok\imperavi\Imperavi',
+    'class' => 'krok\translation\Translation',
 ],
 ```
 
-register modules for Cp modules ( @vendor\krok\cp\Cp.php )
+register for Cp modules ( @vendor\krok\cp\Cp.php )
 
 ```
 public function registerModules()
 {
     $this->modules = [
-        'imperavi' => [
-            'class' => 'krok\imperavi\Manage',
+        'translation' => [
+            'class' => 'krok\translation\Manage',
         ],
     ];
 }
 ```
-
-Example:
 
 ```
 'components' => [
@@ -76,54 +72,4 @@ Example:
         ],
     ],
 ]
-```
-
-Usage
------
-
-Once the extension is installed, simply use it in your code by  :
-
-```
-<?=$form->field($model, 'body')->widget(\krok\imperavi\widgets\ImperaviWidget::className())?>
-```
-
-or not use ActiveField
-
-```
-<?=
-    krok\imperavi\widgets\ImperaviWidget::widget([
-        'model' => $model,
-        'attribute' => 'body'
-    ])
-?>
-```
-
-or config advanced redactor reference [Docs](http://imperavi.com/redactor/docs/)
-
-```
-<?=
-    $form->field($model, 'body')->widget(
-        krok\imperavi\widgets\ImperaviWidget::className(),
-        [
-            'clientOptions' => [
-                'buttonSource' => true,
-                'fileUpload' => yii::$app->getUrlManager()->createUrl(['/cp/imperavi/manage/FileUpload']),
-                'fileManagerJson' => yii::$app->getUrlManager()->createUrl(['/cp/imperavi/manage/FileList']),
-                'imageUpload' => yii::$app->getUrlManager()->createUrl(['/cp/imperavi/manage/ImageUpload']),
-                'imageManagerJson' => yii::$app->getUrlManager()->createUrl(['/cp/imperavi/manage/ImageList']),
-                'definedLinks' => yii::$app->getUrlManager()->createUrl(['/cp/imperavi/manage/PageList']),
-                'plugins' => [
-                    'filemanager',
-                    'imagemanager',
-                    'definedlinks',
-                    'fontfamily',
-                    'fontcolor',
-                    'fontsize',
-                    'table',
-                    'video',
-                ],
-            ],
-        ]
-    )
-?>
 ```
