@@ -52,6 +52,32 @@ public function registerModules()
 }
 ```
 
+Example:
+
+```
+'components' => [
+    'i18n' => [
+        'translations' => [
+            'db' => [
+                'sourceLanguage' => 'ru-RU',
+                'class' => 'yii\i18n\DbMessageSource',
+                'messageTable' => '{{%i18n_message}}',
+                'sourceMessageTable' => '{{%i18n_source}}',
+                'enableCaching' => YII_DEBUG ? false : true,
+                'on missingTranslation' => [
+                    'krok\translation\components\TranslationEventHandler', 'handleMissingTranslation'
+                ],
+            ],
+            'yii' => [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'sourceLanguage' => 'en-US',
+                'basePath' => '@app/messages',
+            ],
+        ],
+    ],
+]
+```
+
 Usage
 -----
 
