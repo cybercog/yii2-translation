@@ -1,0 +1,23 @@
+{
+    "name": "krok/yii2-translation",
+    "description": "Yii2 Translation Manager",
+    "type": "yii2-extension",
+    "keywords": ["yii2", "extension", "translation", "manager"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "krok",
+            "email": "creator.git@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "krok/yii2-language": "*",
+        "krok/yii2-cp": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "krok\\translation\\": ""
+        }
+    }
+}
