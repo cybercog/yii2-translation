@@ -33,7 +33,9 @@ Add to config file (config/web.php or common\config\main.php)
 
 ```
 'modules' => [
-    'class' => 'krok\translation\Translation',
+        'translation' => [
+            'class' => 'krok\translation\Translation',
+        ],
 ],
 ```
 
