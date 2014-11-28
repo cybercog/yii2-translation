@@ -9,7 +9,7 @@ $this->title = Yii::t(
         'yii',
         'Update {modelClass}: ',
         [
-            'modelClass' => yii::t('translation', 'Translation'),
+            'modelClass' => Yii::t('translation', 'Translation'),
         ]
     ) . ' ' . $i18nSource->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('translation', 'Translation'), 'url' => ['index']];

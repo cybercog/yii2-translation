@@ -9,7 +9,7 @@ $this->title = Yii::t(
     'yii',
     'Create {modelClass}',
     [
-        'modelClass' => yii::t('translation', 'Translation'),
+        'modelClass' => Yii::t('translation', 'Translation'),
     ]
 );
 $this->params['breadcrumbs'][] = ['label' => Yii::t('translation', 'Translation'), 'url' => ['index']];

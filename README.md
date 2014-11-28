@@ -23,26 +23,26 @@ to the require section of your `composer.json` file.
 Configure
 -----------------
 
-Add to config file (config/web.php or common\config\main.php)
+Add to config file (config/web.php or common/config/main.php)
 
 ```
-'bootstrap' => [
-    'translation',
-],
+    'bootstrap' => [
+        'translation',
+    ],
 ```
 
 ```
-'modules' => [
+    'modules' => [
         'translation' => [
             'class' => 'krok\translation\Translation',
         ],
-],
+    ],
 ```
 
 register modules
 
 ```
-'modules' => [
+    'modules' => [
         'cp' => [
             'class' => 'krok\cp\Cp',
             'modules' => [
@@ -51,29 +51,47 @@ register modules
                 ],
             ],
         ],
-],
+    ],
 ```
 
 ```
-'components' => [
-    'i18n' => [
-        'translations' => [
-            'db' => [
-                'sourceLanguage' => 'ru-RU',
-                'class' => 'yii\i18n\DbMessageSource',
-                'messageTable' => '{{%i18n_message}}',
-                'sourceMessageTable' => '{{%i18n_source}}',
-                'enableCaching' => YII_DEBUG ? false : true,
-                'on missingTranslation' => [
-                    'krok\translation\components\TranslationEventHandler', 'handleMissingTranslation'
+    'components' => [
+        'i18n' => [
+            'translations' => [
+                'db' => [
+                    'sourceLanguage' => 'ru-RU',
+                    'class' => 'yii\i18n\DbMessageSource',
+                    'messageTable' => '{{%i18n_message}}',
+                    'sourceMessageTable' => '{{%i18n_source}}',
+                    'enableCaching' => YII_DEBUG ? false : true,
+                    'on missingTranslation' => [
+                        'krok\translation\components\TranslationEventHandler',
+                        'handleMissingTranslation'
+                    ],
                 ],
-            ],
-            'yii' => [
-                'class' => 'yii\i18n\PhpMessageSource',
-                'sourceLanguage' => 'en-US',
-                'basePath' => '@app/messages',
+                'yii' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'sourceLanguage' => 'en-US',
+                    'basePath' => '@app/messages',
+                ],
             ],
         ],
     ],
-]
+```
+
+Add to config file (config/params.php or common/config/params.php)
+
+```
+    'nav' => [
+        [
+            'label' => ['category' => 'cp', 'context' => 'Administration'],
+            'items' => [
+                [
+                    'label' => ['category' => 'translation', 'context' => 'Translation'],
+                    'url' => ['/cp/translation'],
+                ],
+                '<li class="divider"></li>',
+            ],
+        ],
+    ],
 ```

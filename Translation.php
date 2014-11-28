@@ -2,7 +2,7 @@
 
 namespace krok\translation;
 
-use yii;
+use Yii;
 
 class Translation extends \yii\base\Module implements \yii\base\BootstrapInterface
 {
@@ -26,6 +26,8 @@ class Translation extends \yii\base\Module implements \yii\base\BootstrapInterfa
     {
         $app->getUrlManager()->addRules(
             [
+                '<language:\w+\-\w+>/cp/' . $this->id => 'cp/' . $this->id,
+                '<language:\w+\-\w+>/cp/' . $this->id . '/<controller:\w+>' => 'cp/' . $this->id . '/<controller>',
                 '<language:\w+\-\w+>/cp/' . $this->id . '/<controller:\w+>/<action:\w+>' => 'cp/' . $this->id . '/<controller>/<action>',
             ],
             false
@@ -34,7 +36,7 @@ class Translation extends \yii\base\Module implements \yii\base\BootstrapInterfa
 
     public function registerTranslations()
     {
-        yii::$app->i18n->translations[$this->id] = [
+        Yii::$app->i18n->translations[$this->id] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
             'basePath' => '@krok/translation/messages',

@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\DetailView;
 use krok\translation\models\I18nMessage;
 
@@ -41,13 +42,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'message',
                 [
                     'attribute' => 'language',
-                    'label' => (new I18nMessage())->attributeLabels()['language'],
-                    'value' => isset($language[$model->i18nMessage->language]) ? $language[$model->i18nMessage->language] : '',
+                    'label' => Yii::t('translation', 'Language'),
+                    'value' => ArrayHelper::getValue($language, $model->i18nMessage->language),
                 ],
                 [
                     'attribute' => 'translation',
-                    'label' => (new I18nMessage())->attributeLabels()['translation'],
-                    'value' => isset($model->i18nMessage->translation) ? $model->i18nMessage->translation : '',
+                    'label' => Yii::t('translation', 'Translation'),
+                    'value' => ArrayHelper::getValue($model->i18nMessage, 'translation'),
                 ],
             ],
         ]

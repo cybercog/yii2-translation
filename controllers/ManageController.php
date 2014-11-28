@@ -63,9 +63,9 @@ class ManageController extends Controller
             ->where(['id' => $id, 'language' => Language::getCurrent()])
             ->one();
 
-        if (yii::$app->request->isPost) {
+        if (Yii::$app->request->isPost) {
 
-            $transaction = yii::$app->db->beginTransaction();
+            $transaction = Yii::$app->db->beginTransaction();
 
             try {
                 $i18nSource->load(Yii::$app->request->post());

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 use krok\translation\models\I18nMessage;
 
 /* @var $this yii\web\View */
@@ -28,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'message',
                 [
                     'attribute' => 'translation',
-                    'label' => (new I18nMessage())->attributeLabels()['translation'],
+                    'label' => Yii::t('translation', 'Translation'),
                     'value' => function ($model) {
-                            return isset($model->i18nMessage->translation) ? $model->i18nMessage->translation : '';
+                            return ArrayHelper::getValue($model->i18nMessage, 'translation');
                         },
                 ],
                 ['class' => 'yii\grid\ActionColumn'],
