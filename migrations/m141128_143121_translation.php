@@ -7,24 +7,26 @@ class m141128_143121_translation extends Migration
 {
     public function safeUp()
     {
+        $options = ($this->db->getDriverName() === 'mysql') ? 'ENGINE=InnoDB DEFAULT CHARSET=utf8' : null;
         $this->createTable(
             '{{%i18n_source}}',
             [
-                'id' => 'int(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY',
-                'category' => 'varchar(32) NOT NULL DEFAULT \'\'',
-                'message' => 'varchar(128) NOT NULL DEFAULT \'\'',
+                'id' => Schema::TYPE_PK,
+                'category' => Schema::TYPE_STRING . '(32) NOT NULL DEFAULT \'\'',
+                'message' => Schema::TYPE_STRING . '(128) NOT NULL DEFAULT \'\'',
             ],
-            'ENGINE=InnoDB DEFAULT CHARSET=utf8'
+            $options
         );
         $this->createIndex('category', '{{%i18n_source}}', ['category', 'message']);
 
         $this->createTable(
             '{{%i18n_message}}',
             [
-                'id' => 'int(11) unsigned NOT NULL DEFAULT \'0\'',
-                'language' => 'varchar(8) NOT NULL DEFAULT \'\'',
-                'translation' => 'varchar(128) NOT NULL DEFAULT \'\'',
-            ]
+                'id' => Schema::TYPE_INTEGER . '(11) NOT NULL DEFAULT \'0\'',
+                'language' => Schema::TYPE_STRING . '(8) NOT NULL DEFAULT \'\'',
+                'translation' => Schema::TYPE_STRING . '(128) NOT NULL DEFAULT \'\'',
+            ],
+            $options
         );
         $this->addPrimaryKey('pk', '{{%i18n_message}}', ['id', 'language']);
         $this->createIndex('language', '{{%i18n_message}}', ['language']);
