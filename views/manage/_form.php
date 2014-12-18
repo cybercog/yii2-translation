@@ -4,7 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model krok\translation\models\I18nSource */
+/* @var $i18nSource krok\translation\models\I18nSource */
+/* @var $i18nMessage krok\translation\models\I18nMessage */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

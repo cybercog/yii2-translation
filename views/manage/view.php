@@ -3,10 +3,10 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\DetailView;
-use krok\translation\models\I18nMessage;
 
 /* @var $this yii\web\View */
 /* @var $model krok\translation\models\I18nSource */
+/* @var $language [] */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('translation', 'Translation'), 'url' => ['index']];

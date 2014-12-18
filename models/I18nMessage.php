@@ -3,6 +3,7 @@
 namespace krok\translation\models;
 
 use Yii;
+use krok\language\models\Language;
 
 /**
  * This is the model class for table "{{%i18n_message}}".

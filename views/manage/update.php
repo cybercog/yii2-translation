@@ -3,7 +3,8 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model krok\translation\models\I18nSource */
+/* @var $i18nSource krok\translation\models\I18nSource */
+/* @var $i18nMessage krok\translation\models\I18nMessage */
 
 $this->title = Yii::t(
         'yii',
