@@ -72,7 +72,7 @@ register modules
                 'yii' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'sourceLanguage' => 'en-US',
-                    'basePath' => '@app/messages',
+                    'basePath' => '@app' . DIRECTORY_SEPARATOR . 'messages',
                 ],
             ],
         ],
